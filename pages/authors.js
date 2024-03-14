@@ -1,7 +1,13 @@
 let Author = require('../models/author');
 
 get_author_list = async () => {
-  let authors_list = [];
+  // let authors_list = [];
+  // return authors_list.map(function(author) {
+  //   return author.name + " : " + author.lifespan;
+  // });
+  let authors_list = await Authos.find()
+      .sort([['family_name', 'ascending']])
+      .exec()
   return authors_list.map(function(author) {
     return author.name + " : " + author.lifespan;
   });
