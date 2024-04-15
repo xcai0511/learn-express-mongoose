@@ -12,6 +12,7 @@ function Login() {
     {
      try {
        const response = await axios.get('http://localhost:8001/csrf-token', { withCredentials: true });
+       console.log(response);
        setCsrfToken(response.data.csrfToken);
      } catch (error) {
        console.error('Error fetching CSRF token:', error);
@@ -57,7 +58,7 @@ function Login() {
         },
         withCredentials: true,
       });
-
+      console.log(response);
       setLoggedIn(response.data.success);
       setUser(response.data.user.username);
     } catch (error) {
@@ -73,7 +74,6 @@ function Login() {
         },
         withCredentials: true,
       });
-
       setLoggedIn(false);
       setUser("");
       setCsrfToken("");
