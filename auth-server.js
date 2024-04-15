@@ -45,8 +45,13 @@ app.post('/login', (req, res) => {
 
 // Logout route
 app.post('/logout', (req, res) => {
-  req.session.destroy();
-  res.json({ success: true });
+  if(req.session) {
+    req.session.destroy();
+    res.json({ success: true });
+  }
+  else {
+    res.json({ success: false });
+  }
 });
 
 // Check login status route
@@ -57,6 +62,8 @@ app.get('/check-login', (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 8001;
-app.listen(PORT, () => {
+let server = app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+module.exports = server;
