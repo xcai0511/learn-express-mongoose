@@ -1,11 +1,11 @@
 //import logo from './logo.svg';
 import './App.css';
-import LibClient from './components/libclient';
+import Login from './components/login';
 
 function App() {
     return (
     <div className="App">
-      <LibClient />
+      <Login />
     </div>
     );
 }

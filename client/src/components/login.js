@@ -22,7 +22,7 @@ function Login() {
     try {
       const response = await axios.get('http://localhost:8001/check-login', {
         headers: {
-          'X-CSRF-Token': csrfToken,
+          'x-csrf-token': csrfToken,
         },
         withCredentials: true,
       });
@@ -53,7 +53,7 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:8001/login', { username, password }, {
         headers: {
-          'X-CSRF-Token': csrfToken,
+          'x-csrf-token': csrfToken,
         },
         withCredentials: true,
       });
@@ -69,13 +69,14 @@ function Login() {
     try {
       await axios.post('http://localhost:8001/logout', null, {
         headers: {
-          'X-CSRF-Token': csrfToken,
+          'x-csrf-token': csrfToken,
         },
         withCredentials: true,
       });
 
       setLoggedIn(false);
       setUser("");
+      setCsrfToken("");
     } catch (error) {
       console.error('Error logging out:', error);
     }
